@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="listitem_linearlayout_margin_left">10dp</dimen>
+    <dimen name="listitem_textview_displayname">18sp</dimen>
+    <dimen name="listitem_textview_phonenumber">16sp</dimen>
+</resources>

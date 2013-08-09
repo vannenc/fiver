@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/listitem_linearlayout_margin_left"
+        android:layout_marginTop="@dimen/listitem_linearlayout_margin_left"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textViewDisplayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TEST_NAME"
+            android:textSize="@dimen/listitem_textview_displayname" />
+
+        <TextView
+            android:id="@+id/textViewPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TEST_PHONENUMBER"
+            android:textSize="@dimen/listitem_textview_phonenumber" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBoxSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/linearLayout1"
+        android:focusable="false"
+        android:text="@string/NULL" />
+
+</RelativeLayout>
