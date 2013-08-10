@@ -22,10 +22,13 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
@@ -57,7 +60,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 		
 		contactAdapter = new ContactAdapter(this, arrContacts);
 		
-		listViewAllContacts.setAdapter(mContactCursorAdapter);
+		//listViewAllContacts.setAdapter(mContactCursorAdapter);
 		listViewAllContacts.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		listViewAllContacts.setClickable(true);
 		  
@@ -70,11 +73,10 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
+			
 				
-				
-				CheckBox c = (CheckBox)view.findViewById(R.id.checkBoxSelected);
-				c.toggle();
-				
+				arrContacts.get(position).setSelectedToProcess(!arrContacts.get(position).getSelectedToProcess());
+				contactAdapter.notifyDataSetChanged();
 				Log.d(TAG, position + "");
 				
 			}
@@ -83,9 +85,22 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 		
 		
 		
-		//listViewAllContacts.setAdapter(contactAdapter);
+		listViewAllContacts.setAdapter(contactAdapter);
 		
 		getSupportLoaderManager().initLoader(0, null, this);
+		
+		
+		Button button1 = (Button)findViewById(R.id.button1);
+		button1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(MainActivity.this,
+						listViewAllContacts.getCheckedItemPositions().size() + "",
+						Toast.LENGTH_SHORT).show();
+				
+			}
+		});
 		
 		
 		//updateContact("1", "888-8888");

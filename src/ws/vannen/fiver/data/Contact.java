@@ -5,6 +5,7 @@ public class Contact {
 	private String _id;
 	private String displayName;
 	private String phoneNumber;
+	private Boolean selectedToProcess = false;
 	
 	public Contact(String id, String displayName, String phoneNumber){
 		this._id = id;
@@ -31,6 +32,14 @@ public class Contact {
 	}
 	public void set_id(String _id) {
 		this._id = _id;
+	}
+
+	public Boolean getSelectedToProcess() {
+		return selectedToProcess;
+	}
+
+	public void setSelectedToProcess(Boolean selectedToProcess) {
+		this.selectedToProcess = selectedToProcess;
 	}
 	
 
