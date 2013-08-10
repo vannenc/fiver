@@ -52,6 +52,7 @@
             android:text="@string/TEST_PHONENUMBER"
             android:textColor="@color/grey"
             android:textSize="@dimen/listitem_textview_phonenumber" />
+
     </LinearLayout>
 
     <CheckBox

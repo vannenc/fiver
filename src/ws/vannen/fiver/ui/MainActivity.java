@@ -131,6 +131,10 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 				Log.d("Debug", data.getString(0));
 				Log.d("Debug", data.getString(1));
 				Log.d("Debug", data.getString(2));
+				
+				String regex = "\\d{4,}";
+				String output = data.getString(2).replaceAll(regex, "<u>$0</u>");
+				System.out.println(output);
 					
 			}
 			contactAdapter.notifyDataSetChanged();
