@@ -3,7 +3,7 @@
     android:id="@+id/relativeLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/gradient_grey" >
+    android:background="@drawable/selector_listview_contacts" >
 
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
