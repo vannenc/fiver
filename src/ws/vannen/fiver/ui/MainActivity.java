@@ -2,10 +2,8 @@ package ws.vannen.fiver.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import ws.vannen.fiver.R;
-import ws.vannen.fiver.app.CoreApp;
 import ws.vannen.fiver.data.Contact;
 import ws.vannen.fiver.data.Contact.PhoneNumberType;
 import ws.vannen.fiver.data.adapter.ContactAdapter;
@@ -18,18 +16,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
-import android.provider.ContactsContract.Contacts;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
@@ -117,6 +111,8 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 		Log.e("test", data.getCount() + "");
 		try {
 			
+			unProcessedContacts.clear();
+			contactAdapter.notifyDataSetChanged();
 			while(data.moveToNext()){
 				
 				Contact contact = new Contact(data.getString(0),data.getString(1),data.getString(2));
@@ -157,7 +153,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 	public void onLoaderReset(Loader<Cursor> arg0) {
 		//mContactCursorAdapter.swapCursor(null);
 		unProcessedContacts.clear();
-		contactAdapter.notifyDataSetChanged();
+		contactAdapter.notifyDataSetInvalidated();
 	}
 	
 	
