@@ -34,5 +34,8 @@ public class CoreApp extends Application {
 		     super.onCreate();
 
 	}
+	
+	
+
 
 }

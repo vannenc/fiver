@@ -2,10 +2,14 @@ package ws.vannen.fiver.ui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import ws.vannen.fiver.R;
+import ws.vannen.fiver.app.CoreApp;
 import ws.vannen.fiver.data.Contact;
+import ws.vannen.fiver.data.Contact.PhoneNumberType;
 import ws.vannen.fiver.data.adapter.ContactAdapter;
+import ws.vannen.fiver.utils.MruPhoneNumberUtils;
 import android.app.ProgressDialog;
 import android.content.ContentProviderOperation;
 import android.content.OperationApplicationException;
@@ -77,18 +81,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 
 		getSupportLoaderManager().initLoader(0, null, this);
 		
-		
-		Button button1 = (Button)findViewById(R.id.button1);
-		button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(MainActivity.this,
-						listViewAllContacts.getCheckedItemPositions().size() + "",
-						Toast.LENGTH_SHORT).show();
-				
-			}
-		});
+	
 		
 		
 		//updateContact("1", "888-8888");
@@ -105,13 +98,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		Uri baseUri;
-		
-/*		if(mCurFiter != null){
-			baseUri = Uri.withAppendedPath(Contacts.CONTENT_FILTER_URI, Uri.encode(mCurFiter));
-		}else{
-			baseUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-		}*/
-		
+
 		if(pDialog==null){
 			pDialog = ProgressDialog.show(MainActivity.this, "", "Retrieving contacts");
 		}
@@ -126,17 +113,29 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
 		Log.e("test", data.getCount() + "");
 		try {
 			
 			while(data.moveToNext()){
 				
-				unProcessedContacts.add(new Contact(data.getString(0),data.getString(1),data.getString(2)));
+				Contact contact = new Contact(data.getString(0),data.getString(1),data.getString(2));
+				
+				String contactPhoneNumber = data.getString(2);
+				
+				if(MruPhoneNumberUtils.isMobilePhoneNumber(contactPhoneNumber)){
+					contact.setPhoneNumberType(PhoneNumberType.Mobile);
+					unProcessedContacts.add(contact);
+					
+				}else if(MruPhoneNumberUtils.isPhoneNumber(contactPhoneNumber)){
+					contact.setPhoneNumberType(PhoneNumberType.Unknown);
+					unProcessedContacts.add(contact);
+				}
+				
 				Log.d("Debug", data.getString(0));
 				Log.d("Debug", data.getString(1));
 				Log.d("Debug", data.getString(2));
-				
-				
+					
 			}
 			contactAdapter.notifyDataSetChanged();
 			//data.moveToFirst();
