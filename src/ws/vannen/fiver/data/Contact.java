@@ -6,6 +6,12 @@ public class Contact {
 	private String displayName;
 	private String phoneNumber;
 	private Boolean selectedToProcess = false;
+	private PhoneNumberType phoneNumberType = PhoneNumberType.Unknown;
+	
+	public enum PhoneNumberType{
+		Mobile,
+		Unknown,
+	};
 	
 	public Contact(String id, String displayName, String phoneNumber){
 		this._id = id;
@@ -40,6 +46,14 @@ public class Contact {
 
 	public void setSelectedToProcess(Boolean selectedToProcess) {
 		this.selectedToProcess = selectedToProcess;
+	}
+
+	public PhoneNumberType getPhoneNumberType() {
+		return phoneNumberType;
+	}
+
+	public void setPhoneNumberType(PhoneNumberType phoneNumberType) {
+		this.phoneNumberType = phoneNumberType;
 	}
 	
 

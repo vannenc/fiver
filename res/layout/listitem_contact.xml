@@ -2,31 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativeLayoutMain"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="@dimen/listitem_linearlayout_margin_left"
-        android:layout_marginTop="@dimen/listitem_linearlayout_margin_left"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textViewDisplayName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/TEST_NAME"
-            android:textSize="@dimen/listitem_textview_displayname" />
-
-        <TextView
-            android:id="@+id/textViewPhoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/TEST_PHONENUMBER"
-            android:textSize="@dimen/listitem_textview_phonenumber" />
-    </LinearLayout>
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradient_grey" >
 
     <CheckBox
         android:id="@+id/checkBoxSelected"
@@ -36,5 +13,52 @@
         android:layout_alignTop="@+id/linearLayout1"
         android:focusable="false"
         android:text="@string/NULL" />
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/checkBoxSelected"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="true"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textViewNumberTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/TEST_TAG" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/listitem_linearlayout_margin_left"
+        android:layout_toRightOf="@+id/RelativeLayout1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textViewDisplayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TEST_NAME"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/listitem_textview_displayname"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/textViewPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TEST_PHONENUMBER"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/listitem_textview_phonenumber" />
+    </LinearLayout>
 
 </RelativeLayout>

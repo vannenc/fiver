@@ -7,5 +7,6 @@
     <string name="NULL"></string>
     <string name="TEST_NAME">John Lennon</string>
     <string name="TEST_PHONENUMBER">777-7777</string>
+    <string name="TEST_TAG">M</string>
 
 </resources>

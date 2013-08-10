@@ -2,5 +2,7 @@
 <resources>
     <dimen name="listitem_linearlayout_margin_left">10dp</dimen>
     <dimen name="listitem_textview_displayname">18sp</dimen>
-    <dimen name="listitem_textview_phonenumber">16sp</dimen>
+    <dimen name="listitem_textview_phonenumber">14sp</dimen>
+    <dimen name="listitem_tag">10dp</dimen>
+    <dimen name="listview_textview_tag">12sp</dimen>
 </resources>

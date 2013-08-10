@@ -4,6 +4,7 @@ import java.util.List;
 
 import ws.vannen.fiver.R;
 import ws.vannen.fiver.data.Contact;
+import ws.vannen.fiver.data.Contact.PhoneNumberType;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ public class ContactAdapter extends BaseAdapter {
 		   String strContactId;
 		   TextView textViewDisplayName;
 		   TextView textViewPhoneNumber;
+		   TextView textViewPhoneNumberTag;
 		   CheckBox checkboxSelected;
 	}
 	
@@ -56,6 +58,7 @@ public class ContactAdapter extends BaseAdapter {
 			convertView = LayoutInflater.from(_context).inflate(R.layout.listitem_contact, parent, false);
 			viewHolder.textViewDisplayName = (TextView)convertView.findViewById(R.id.textViewDisplayName);
 			viewHolder.textViewPhoneNumber = (TextView)convertView.findViewById(R.id.textViewPhoneNumber);
+			viewHolder.textViewPhoneNumberTag = (TextView)convertView.findViewById(R.id.textViewNumberTag);
 			viewHolder.checkboxSelected = (CheckBox)convertView.findViewById(R.id.checkBoxSelected);
 			convertView.setTag(viewHolder);
 		}else{
@@ -74,6 +77,12 @@ public class ContactAdapter extends BaseAdapter {
 		viewHolder.textViewDisplayName.setText(arrContacts.get(position).getDisplayName());
 		viewHolder.textViewPhoneNumber.setText(arrContacts.get(position).getPhoneNumber());
 		viewHolder.checkboxSelected.setChecked(arrContacts.get(position).getSelectedToProcess());
+		
+		if(arrContacts.get(position).getPhoneNumberType() == PhoneNumberType.Unknown){
+			viewHolder.textViewPhoneNumberTag.setText("?");
+		}else{
+			viewHolder.textViewPhoneNumberTag.setText("M");
+		}
 		
 		return convertView;
 	}

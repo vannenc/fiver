@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -15,6 +15,16 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    
+    <style name="ListItemContactTag" parent="@android:style/TextAppearance.Widget.TextView">
+        
+        <item name="android:background">@drawable/list_item_contact_tag</item>
+        <item name="android:textColor">#bbb</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:padding">2dp</item>
+        
     </style>
 
 </resources>
