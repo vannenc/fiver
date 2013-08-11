@@ -17,7 +17,36 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
+    <style name="Theme.Fiver" parent="Theme.Sherlock.Light.DarkActionBar">
+
+	    <!-- If you want to use the default ViewPagerIndicator-styles, use the following: -->
+	    <item name="vpiTabPageIndicatorStyle">@style/TabPageFiver</item>
+		
+	    <!-- Put whatever other styles you want to define in your custom theme -->
+	</style>
+
+    <style name="StyledIndicators" parent="Theme.Fiver">
+          <item name="vpiTabPageIndicatorStyle">@style/TabPageFiver</item>
+    </style>
     
+    <style name="TabPageFiver" parent="Widget.TabPageIndicator">
+        <item name="android:textColor">#333</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">22dip</item>
+        <item name="android:paddingRight">22dip</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">#333</item>
+    </style>
+    
+   <style name="TabPageFiverText" parent="TextAppearance.TabPageIndicator">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#333</item>
+    </style>
+    
+    <!-- Widget based theme. -->
     <style name="ListItemContactTag" parent="@android:style/TextAppearance.Widget.TextView">
         
         <item name="android:background">@drawable/list_item_contact_tag</item>
@@ -26,5 +55,9 @@
         <item name="android:padding">2dp</item>
         
     </style>
+    
+    
+    
+ 
 
 </resources>

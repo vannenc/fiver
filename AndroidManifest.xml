@@ -27,6 +27,7 @@
         <activity
             android:name="ws.vannen.fiver.ui.MainFragmentActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/Theme.Fiver"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

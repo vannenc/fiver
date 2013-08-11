@@ -3,17 +3,16 @@ package ws.vannen.fiver.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import ws.vannen.fiver.R;
 import ws.vannen.fiver.data.Contact;
 import ws.vannen.fiver.data.adapter.ContactPageAdapter;
-import android.graphics.Color;
+import ws.vannen.fiver.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.viewpagerindicator.TitlePageIndicator;
+import com.viewpagerindicator.TabPageIndicator;
 
 public class MainFragmentActivity extends SherlockFragmentActivity {
 	
@@ -23,15 +22,17 @@ public class MainFragmentActivity extends SherlockFragmentActivity {
 	
 	@Override
 	protected void onCreate(Bundle bundle) {
-		setTheme(R.style.Theme_Sherlock_Light_DarkActionBar);
+		setTheme(R.style.Theme_Fiver);
 		super.onCreate(bundle);
 		setContentView(R.layout.fragmentactivity_main);
 		
 		ArrayList<Contact> t = new ArrayList<Contact>();
 		t.add(new Contact("1", "hhe", "ewre"));
+		t.add(new Contact("2", "hhe", "ewre"));
 		
 		fragmentManager = getSupportFragmentManager();
 		List<Fragment> allFragments = new ArrayList<Fragment>();
+		allFragments.add(ContactsUnprocessedFragment.newInstance(t));
 		allFragments.add(ContactsUnprocessedFragment.newInstance(t));
 
 		
@@ -40,10 +41,10 @@ public class MainFragmentActivity extends SherlockFragmentActivity {
 		viewPager = (ViewPager)findViewById(R.id.viewPagerMain);
 		viewPager.setAdapter(contactPageAdapter);
 		
-		TitlePageIndicator titleIndicator = (TitlePageIndicator)findViewById(R.id.titles);
-		titleIndicator.setViewPager(viewPager);
-		titleIndicator.setTextColor(Color.RED);
-		titleIndicator.setSelectedColor(Color.GREEN);
+		TabPageIndicator tabPageIndicator = (TabPageIndicator)findViewById(R.id.tabPageIndicator);
+		tabPageIndicator.setViewPager(viewPager);
+		//tabPageIndicator.set
+		//tabPageIndicator.set
 	}
 
 }

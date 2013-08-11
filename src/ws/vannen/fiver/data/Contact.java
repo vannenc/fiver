@@ -10,7 +10,7 @@ public class Contact implements Parcelable{
 	private String phoneNumber;
 	private Boolean selectedToProcess = false;
 	private PhoneNumberType phoneNumberType = PhoneNumberType.Unknown;
-	private String newPhoneNumber;
+	private String newPhoneNumber = "";
 	
 	public enum PhoneNumberType{
 		Mobile,
@@ -19,7 +19,7 @@ public class Contact implements Parcelable{
 	
 	
 	public Contact(Parcel in){
-		String[] data = new String[5];
+		String[] data = new String[6];
 		
 		in.readStringArray(data);
 		this._id = data[0];
@@ -90,7 +90,7 @@ public class Contact implements Parcelable{
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		
-		String[] data = new String[5];
+		String[] data = new String[6];
 		data[0] = this._id;
 		data[1] = this.displayName;
 		data[2] = this.phoneNumber;
