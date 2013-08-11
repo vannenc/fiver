@@ -7,6 +7,7 @@ public class Contact {
 	private String phoneNumber;
 	private Boolean selectedToProcess = false;
 	private PhoneNumberType phoneNumberType = PhoneNumberType.Unknown;
+	private String newPhoneNumber;
 	
 	public enum PhoneNumberType{
 		Mobile,
@@ -54,6 +55,14 @@ public class Contact {
 
 	public void setPhoneNumberType(PhoneNumberType phoneNumberType) {
 		this.phoneNumberType = phoneNumberType;
+	}
+
+	public String getNewPhoneNumber() {
+		return newPhoneNumber;
+	}
+
+	public void setNewPhoneNumber(String newPhoneNumber) {
+		this.newPhoneNumber = newPhoneNumber;
 	}
 	
 

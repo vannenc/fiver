@@ -7,6 +7,8 @@ import android.text.TextUtils;
 
 public class MruPhoneNumberUtils {
 	
+   public static String patternMauritianPhoneNumberThreeDigitsReplace = "(?:^|(?<=\\+230)|(?<=\\+230 ))([0-9]{3})";
+	
    private static Pattern mauritianPhoneNumber = Pattern
 			.compile("(\\+230|\\+230 )?[0-9]{3}( |-)?[0-9]{2}( |-)?[0-9]{2}");
    

@@ -121,20 +121,20 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 				
 				if(MruPhoneNumberUtils.isMobilePhoneNumber(contactPhoneNumber)){
 					contact.setPhoneNumberType(PhoneNumberType.Mobile);
+					contact.setNewPhoneNumber(data.getString(2).replaceAll(
+							MruPhoneNumberUtils.patternMauritianPhoneNumberThreeDigitsReplace, "5$0"));
 					unProcessedContacts.add(contact);
 					
 				}else if(MruPhoneNumberUtils.isPhoneNumber(contactPhoneNumber)){
 					contact.setPhoneNumberType(PhoneNumberType.Unknown);
+					contact.setNewPhoneNumber(data.getString(2).replaceAll(
+							MruPhoneNumberUtils.patternMauritianPhoneNumberThreeDigitsReplace, "5$0"));
 					unProcessedContacts.add(contact);
 				}
 				
 				Log.d("Debug", data.getString(0));
 				Log.d("Debug", data.getString(1));
 				Log.d("Debug", data.getString(2));
-				
-				String regex = "\\d{4,}";
-				String output = data.getString(2).replaceAll(regex, "<u>$0</u>");
-				System.out.println(output);
 					
 			}
 			contactAdapter.notifyDataSetChanged();
