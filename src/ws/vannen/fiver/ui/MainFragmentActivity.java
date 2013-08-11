@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ws.vannen.fiver.R;
+import ws.vannen.fiver.data.Contact;
 import ws.vannen.fiver.data.adapter.ContactPageAdapter;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,11 +27,13 @@ public class MainFragmentActivity extends SherlockFragmentActivity {
 		super.onCreate(bundle);
 		setContentView(R.layout.fragmentactivity_main);
 		
+		ArrayList<Contact> t = new ArrayList<Contact>();
+		t.add(new Contact("1", "hhe", "ewre"));
+		
 		fragmentManager = getSupportFragmentManager();
 		List<Fragment> allFragments = new ArrayList<Fragment>();
-		allFragments.add(ContactsUnprocessedFragment.newInstance("Page1"));
-		allFragments.add(ContactsUnprocessedFragment.newInstance("Page2"));
-		allFragments.add(ContactsUnprocessedFragment.newInstance("Page3"));
+		allFragments.add(ContactsUnprocessedFragment.newInstance(t));
+
 		
 		contactPageAdapter = new ContactPageAdapter(fragmentManager, allFragments);
 		

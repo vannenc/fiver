@@ -1,22 +1,28 @@
 package ws.vannen.fiver.ui;
 
+import java.util.ArrayList;
+
 import ws.vannen.fiver.R;
+import ws.vannen.fiver.data.Contact;
+import ws.vannen.fiver.data.adapter.ContactAdapter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
 public class ContactsUnprocessedFragment extends SherlockFragment {
 
 	
-	public static ContactsUnprocessedFragment newInstance(String test){
+	public static ContactsUnprocessedFragment newInstance(ArrayList<Contact> allContacts){
 		
 		ContactsUnprocessedFragment newFragment = new ContactsUnprocessedFragment();
 		Bundle b = new Bundle();
-		b.putString("test", test);
+		
+		b.putParcelableArrayList("SDfds", allContacts);
 		
 		newFragment.setArguments(b);
 		
@@ -24,6 +30,9 @@ public class ContactsUnprocessedFragment extends SherlockFragment {
 	}
 	
 	private View view = null;
+	private ListView listViewContactsUnprocessed = null;
+	private ContactAdapter unprocessedContactsAdapter = null;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -39,11 +48,15 @@ public class ContactsUnprocessedFragment extends SherlockFragment {
 		super.onActivityCreated(savedInstanceState);
 		
 		Bundle b = getArguments();
-		TextView t1 = (TextView)view.findViewById(R.id.textView1);
 		
-		if(b.getString("test")!=null){
-			t1.setText(b.getString("test"));
-		}
+		Log.d("ASDASD", b.getParcelableArrayList("SDfds").toString());
+		ArrayList<Contact> all = b.getParcelableArrayList("SDfds");
+		
+		listViewContactsUnprocessed = (ListView)view.findViewById(R.id.listViewContactsUnprocessed);
+		unprocessedContactsAdapter = new ContactAdapter(getActivity(), all);
+		
+		listViewContactsUnprocessed.setAdapter(unprocessedContactsAdapter);
+		
 	}
 	
 	

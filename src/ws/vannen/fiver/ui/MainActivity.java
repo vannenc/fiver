@@ -36,6 +36,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 	
 	private ContactAdapter contactAdapter = null;
 	private List<Contact> unProcessedContacts = new ArrayList<Contact>();
+	private List<Contact> processedContacts = new ArrayList<Contact>();
 	
 	//other stuffs
 	private ProgressDialog pDialog = null;
@@ -111,6 +112,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 		Log.e("test", data.getCount() + "");
 		try {
 			
+			processedContacts.clear();
 			unProcessedContacts.clear();
 			contactAdapter.notifyDataSetChanged();
 			while(data.moveToNext()){
@@ -130,6 +132,10 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 					contact.setNewPhoneNumber(data.getString(2).replaceAll(
 							MruPhoneNumberUtils.patternMauritianPhoneNumberThreeDigitsReplace, "5$0"));
 					unProcessedContacts.add(contact);
+					
+				}else if(MruPhoneNumberUtils.isProcessedMobilePhoneNumber(contactPhoneNumber)){
+					contact.setPhoneNumberType(PhoneNumberType.Mobile);
+					processedContacts.add(contact);
 				}
 				
 				Log.d("Debug", data.getString(0));
