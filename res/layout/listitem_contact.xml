@@ -3,16 +3,16 @@
     android:id="@+id/relativeLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/selector_listview_contacts" >
+    android:background="@color/light_grey" >
 
     <RelativeLayout
-        android:id="@+id/RelativeLayout1"
-        android:layout_width="40dp"
+        android:id="@+id/RelativeLayoutNumberType"
+        android:layout_width="5dp"
         android:layout_height="match_parent"
         android:layout_alignBottom="@+id/linearLayout1"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="true"
-        android:background="@color/light_grey"
+        android:background="@color/orange"
         android:orientation="vertical" >
 
         <TextView
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/listitem_linearlayout_margin_left"
-        android:layout_toRightOf="@+id/RelativeLayout1"
+        android:layout_toRightOf="@+id/RelativeLayoutNumberType"
         android:orientation="vertical"
         android:paddingBottom="@dimen/listitem_linearlayout_margin_left"
         android:paddingTop="@dimen/listitem_linearlayout_margin_left" >

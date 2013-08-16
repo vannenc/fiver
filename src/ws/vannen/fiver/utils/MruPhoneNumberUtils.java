@@ -3,6 +3,8 @@ package ws.vannen.fiver.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import ws.vannen.fiver.data.Contact.PhoneNumberType;
+
 import android.text.TextUtils;
 
 public class MruPhoneNumberUtils {
@@ -15,6 +17,16 @@ public class MruPhoneNumberUtils {
    private static Pattern mauritianMobilePhoneNumber = Pattern
 			.compile("(\\+230|\\+230 )?(4|7|2|8|9)[0-9]{2}( |-)?[0-9]{2}( |-)?[0-9]{2}");
    
+   private static Pattern cellplusPhoneNumber = Pattern
+   .compile("(\\+230|\\+230 )?(25[0-9]|70[0-9]|75[0-9]|76[0-9]|77[0-9]|78[0-9]|79[0-9]|82[0-9]|875|876|877|878|90[0-9]|91[0-9]|92[0-9]|94[0-9])( |-)?[0-9]{2}( |-)?[0-9]{2}");
+   
+   private static Pattern mtmlPhoneNumber = Pattern
+   .compile("(\\+230|\\+230 )?(29[0-9]|86[0-9]|871|95[0-9]|96[0-9])( |-)?[0-9]{2}( |-)?[0-9]{2}");
+   
+   private static Pattern emtelPhoneNumber = Pattern
+   .compile("(\\+230|\\+230 )?(421|422|423|428|429|44[0-9]|472|473|474|475|476|477|478|479|49[0-9]|71[0-9]|72[0-9]|73[0-9]|74[0-9]|93[0-9]|97[0-9]|98[0-9])( |-)?[0-9]{2}( |-)?[0-9]{2}");
+  
+   
    private static Pattern mauritianProcessedMobilePhoneNumber = Pattern
 		   .compile("(\\+230|\\+230 )?5[0-9]{3}( |-)?[0-9]{2}( |-)?[0-9]{2}");
    
@@ -26,6 +38,33 @@ public class MruPhoneNumberUtils {
 	    }
 
 	    return false;
+	}
+	
+	public static final PhoneNumberType detectPhoneNumber(CharSequence target){
+		
+	    if (target != null || TextUtils.isEmpty(target) == false) {
+	    	
+	    	//check cellplus pattern
+	        Matcher numberMatcher = cellplusPhoneNumber.matcher(target);
+	        if(numberMatcher.matches()){
+	        	return PhoneNumberType.Cellplus;
+	        }
+	        
+	        //check emtel pattern
+	        numberMatcher = emtelPhoneNumber.matcher(target);
+	        if(numberMatcher.matches()){
+	        	return PhoneNumberType.Emtel;
+	        }
+	        
+	        //check mtml pattern
+	        numberMatcher = mtmlPhoneNumber.matcher(target);
+	        if(numberMatcher.matches()){
+	        	return PhoneNumberType.Mtml;
+	        }
+	        
+	    }
+	    
+	    return PhoneNumberType.Unknown;
 	}
 	
 	public static final boolean isMobilePhoneNumber(CharSequence target) {

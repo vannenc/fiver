@@ -122,7 +122,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 				String contactPhoneNumber = data.getString(2);
 				
 				if(MruPhoneNumberUtils.isMobilePhoneNumber(contactPhoneNumber)){
-					contact.setPhoneNumberType(PhoneNumberType.Mobile);
+					contact.setPhoneNumberType(MruPhoneNumberUtils.detectPhoneNumber(contactPhoneNumber));
 					contact.setNewPhoneNumber(data.getString(2).replaceAll(
 							MruPhoneNumberUtils.patternMauritianPhoneNumberThreeDigitsReplace, "5$0"));
 					unProcessedContacts.add(contact);
@@ -134,7 +134,7 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 					unProcessedContacts.add(contact);
 					
 				}else if(MruPhoneNumberUtils.isProcessedMobilePhoneNumber(contactPhoneNumber)){
-					contact.setPhoneNumberType(PhoneNumberType.Mobile);
+					contact.setPhoneNumberType(PhoneNumberType.Mtml);
 					processedContacts.add(contact);
 				}
 				

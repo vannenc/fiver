@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ContactAdapter extends BaseAdapter {
@@ -23,6 +24,7 @@ public class ContactAdapter extends BaseAdapter {
 		   TextView textViewPhoneNumber;
 		   TextView textViewPhoneNumberTag;
 		   CheckBox checkboxSelected;
+		   RelativeLayout relativeLayoutNumberType;
 	}
 	
 	private List<Contact> arrContacts;
@@ -60,6 +62,7 @@ public class ContactAdapter extends BaseAdapter {
 			viewHolder.textViewPhoneNumber = (TextView)convertView.findViewById(R.id.textViewPhoneNumber);
 			viewHolder.textViewPhoneNumberTag = (TextView)convertView.findViewById(R.id.textViewNumberTag);
 			viewHolder.checkboxSelected = (CheckBox)convertView.findViewById(R.id.checkBoxSelected);
+			viewHolder.relativeLayoutNumberType = (RelativeLayout)convertView.findViewById(R.id.RelativeLayoutNumberType);
 			convertView.setTag(viewHolder);
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -79,9 +82,25 @@ public class ContactAdapter extends BaseAdapter {
 		viewHolder.checkboxSelected.setChecked(arrContacts.get(position).getSelectedToProcess());
 		
 		if(arrContacts.get(position).getPhoneNumberType() == PhoneNumberType.Unknown){
-			viewHolder.textViewPhoneNumberTag.setText("?");
-		}else{
-			viewHolder.textViewPhoneNumberTag.setText("M");
+			viewHolder.textViewPhoneNumberTag.setText("");
+			viewHolder.relativeLayoutNumberType.setBackgroundColor(
+					this._context.getResources().getColor(R.color.light_grey));
+			
+		}else if(arrContacts.get(position).getPhoneNumberType() == PhoneNumberType.Cellplus){
+			viewHolder.textViewPhoneNumberTag.setText("");
+			viewHolder.relativeLayoutNumberType.setBackgroundColor(
+					this._context.getResources().getColor(R.color.orange));
+
+			
+		}else if(arrContacts.get(position).getPhoneNumberType() == PhoneNumberType.Emtel){
+			viewHolder.textViewPhoneNumberTag.setText("");
+			viewHolder.relativeLayoutNumberType.setBackgroundColor(
+					this._context.getResources().getColor(R.color.emtel));
+			
+		}else if(arrContacts.get(position).getPhoneNumberType() == PhoneNumberType.Mtml){
+			viewHolder.textViewPhoneNumberTag.setText("");
+			viewHolder.relativeLayoutNumberType.setBackgroundColor(
+					this._context.getResources().getColor(R.color.mtml));
 		}
 		
 		return convertView;

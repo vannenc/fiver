@@ -13,8 +13,10 @@ public class Contact implements Parcelable{
 	private String newPhoneNumber = "";
 	
 	public enum PhoneNumberType{
-		Mobile,
 		Unknown,
+		Emtel,
+		Cellplus,
+		Mtml
 	};
 	
 	
