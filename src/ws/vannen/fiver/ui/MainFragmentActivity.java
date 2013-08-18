@@ -66,6 +66,7 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 		//tabPageIndicator.set
 		
 		contactUnprocessedAdapter = new ContactAdapter(this, unProcessedContacts);
+		contactProcessedAdapter = new ContactAdapter(this, processedContacts);
 		
 		getSupportLoaderManager().initLoader(0, null, this);
 	}
@@ -95,7 +96,7 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-		Log.e("test", data.getCount() + "");
+
 		try {
 			
 			processedContacts.clear();
@@ -114,7 +115,7 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 				if(MruPhoneNumberUtils.isMobilePhoneNumber(contactPhoneNumber)){
 					contact.setPhoneNumberType(MruPhoneNumberUtils.detectPhoneNumber(contactPhoneNumber));
 					contact.setNewPhoneNumber(data.getString(2).replaceAll(
-							MruPhoneNumberUtils.patternMauritianPhoneNumberThreeDigitsReplace, "5$0"));
+							MruPhoneNumberUtils.patternPhoneNumberConvert, "5$0"));
 					
 					if(contact.getPhoneNumberType() != PhoneNumberType.Unknown){
 						contact.setSelectedToProcess(true);
@@ -129,17 +130,23 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 					//unProcessedContacts.add(contact);
 					
 				}else if(MruPhoneNumberUtils.isProcessedMobilePhoneNumber(contactPhoneNumber)){
-					contact.setPhoneNumberType(PhoneNumberType.Mtml);
+					contact.setPhoneNumberType(MruPhoneNumberUtils.detectConvertedPhoneNumber(contactPhoneNumber));
+					contact.setAlreadyConverted(true);
+					contact.setOldPhoneNumber(contactPhoneNumber.replaceAll(MruPhoneNumberUtils.patternPhoneNumberRevertOldFormat, ""));
 					processedContacts.add(contact);
 				}
 				
 				Log.d("Debug", data.getString(0));
 				Log.d("Debug", data.getString(1));
 				Log.d("Debug", data.getString(2));
+				
+				
 					
 			}
 			contactUnprocessedAdapter.notifyDataSetChanged();
+			contactProcessedAdapter.notifyDataSetChanged();
 			//data.moveToFirst();
+			Log.e("test rpocessed", processedContacts.size() + "");
 			
 			if(pDialog != null && pDialog.isShowing()){
 				pDialog.dismiss();
@@ -158,6 +165,8 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 	public void onLoaderReset(Loader<Cursor> arg0) {
 		//mContactCursorAdapter.swapCursor(null);
 		unProcessedContacts.clear();
+		processedContacts.clear();
+		contactProcessedAdapter.notifyDataSetChanged();
 		contactUnprocessedAdapter.notifyDataSetInvalidated();
 		
 	}

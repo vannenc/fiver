@@ -124,13 +124,13 @@ public class MainActivity extends SherlockFragmentActivity implements LoaderMana
 				if(MruPhoneNumberUtils.isMobilePhoneNumber(contactPhoneNumber)){
 					contact.setPhoneNumberType(MruPhoneNumberUtils.detectPhoneNumber(contactPhoneNumber));
 					contact.setNewPhoneNumber(data.getString(2).replaceAll(
-							MruPhoneNumberUtils.patternMauritianPhoneNumberThreeDigitsReplace, "5$0"));
+							MruPhoneNumberUtils.patternPhoneNumberConvert, "5$0"));
 					unProcessedContacts.add(contact);
 					
 				}else if(MruPhoneNumberUtils.isPhoneNumber(contactPhoneNumber)){
 					contact.setPhoneNumberType(PhoneNumberType.Unknown);
 					contact.setNewPhoneNumber(data.getString(2).replaceAll(
-							MruPhoneNumberUtils.patternMauritianPhoneNumberThreeDigitsReplace, "5$0"));
+							MruPhoneNumberUtils.patternPhoneNumberConvert, "5$0"));
 					unProcessedContacts.add(contact);
 					
 				}else if(MruPhoneNumberUtils.isProcessedMobilePhoneNumber(contactPhoneNumber)){

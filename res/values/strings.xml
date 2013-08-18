@@ -9,5 +9,7 @@
     <string name="TEST_PHONENUMBER">777-7777</string>
     <string name="TEST_TAG">M</string>
     <string name="textviewEmptyListview">No phone numbers to show.</string>
+    <string name="TEST_NEWPHONENUMBER">5777-7777</string>
+    <string name="convert">></string>
 
 </resources>

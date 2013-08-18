@@ -8,9 +8,11 @@ public class Contact implements Parcelable{
 	private String _id;
 	private String displayName;
 	private String phoneNumber;
+	private Boolean alreadyConverted = false;
 	private Boolean selectedToProcess = false;
 	private PhoneNumberType phoneNumberType = PhoneNumberType.Unknown;
 	private String newPhoneNumber = "";
+	private String oldPhoneNumber = "";
 	
 	public enum PhoneNumberType{
 		Unknown,
@@ -103,6 +105,28 @@ public class Contact implements Parcelable{
 		dest.writeStringArray(data);
 		
 	}
+
+
+	public Boolean getAlreadyConverted() {
+		return alreadyConverted;
+	}
+
+	public void setAlreadyConverted(Boolean alreadyConverted) {
+		this.alreadyConverted = alreadyConverted;
+	}
+
+
+
+
+	public String getOldPhoneNumber() {
+		return oldPhoneNumber;
+	}
+
+	public void setOldPhoneNumber(String oldPhoneNumber) {
+		this.oldPhoneNumber = oldPhoneNumber;
+	}
+
+
 
 
 	public static final Parcelable.Creator<Contact> CREATOR = new Parcelable.Creator<Contact>() {

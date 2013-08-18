@@ -23,6 +23,7 @@ public class ContactAdapter extends BaseAdapter {
 		   TextView textViewDisplayName;
 		   TextView textViewPhoneNumber;
 		   TextView textViewPhoneNumberTag;
+		   TextView textViewNewPhoneNumber;
 		   CheckBox checkboxSelected;
 		   RelativeLayout relativeLayoutNumberType;
 	}
@@ -63,6 +64,7 @@ public class ContactAdapter extends BaseAdapter {
 			viewHolder.textViewPhoneNumberTag = (TextView)convertView.findViewById(R.id.textViewNumberTag);
 			viewHolder.checkboxSelected = (CheckBox)convertView.findViewById(R.id.checkBoxSelected);
 			viewHolder.relativeLayoutNumberType = (RelativeLayout)convertView.findViewById(R.id.RelativeLayoutNumberType);
+			viewHolder.textViewNewPhoneNumber = (TextView)convertView.findViewById(R.id.textViewNewPhoneNumber);
 			convertView.setTag(viewHolder);
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -80,6 +82,13 @@ public class ContactAdapter extends BaseAdapter {
 		viewHolder.textViewDisplayName.setText(arrContacts.get(position).getDisplayName());
 		viewHolder.textViewPhoneNumber.setText(arrContacts.get(position).getPhoneNumber());
 		viewHolder.checkboxSelected.setChecked(arrContacts.get(position).getSelectedToProcess());
+		
+		if(arrContacts.get(position).getAlreadyConverted()){
+			viewHolder.textViewNewPhoneNumber.setText(arrContacts.get(position).getOldPhoneNumber());
+
+		}else{
+			viewHolder.textViewNewPhoneNumber.setText(arrContacts.get(position).getNewPhoneNumber());
+		}
 		
 		if(arrContacts.get(position).getPhoneNumberType() == PhoneNumberType.Unknown){
 			viewHolder.textViewPhoneNumberTag.setText("");

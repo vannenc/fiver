@@ -9,7 +9,7 @@
         android:id="@+id/RelativeLayoutNumberType"
         android:layout_width="5dp"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/linearLayout1"
+        android:layout_alignBottom="@+id/RelativeLayout1"
         android:layout_alignParentLeft="false"
         android:layout_alignParentTop="true"
         android:background="@color/orange"
@@ -22,11 +22,10 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="@string/TEST_TAG" />
-
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -40,6 +39,8 @@
             android:id="@+id/textViewDisplayName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:text="@string/TEST_NAME"
             android:textColor="@color/dark_grey"
             android:textSize="@dimen/listitem_textview_displayname"
@@ -49,11 +50,38 @@
             android:id="@+id/textViewPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textViewDisplayName"
             android:text="@string/TEST_PHONENUMBER"
             android:textColor="@color/grey"
-            android:textSize="@dimen/listitem_textview_phonenumber" />
+            android:textSize="12sp" />
+        
+        <TextView
+            android:id="@+id/textViewConvertSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textViewNewPhoneNumber"
+            android:layout_alignBottom="@+id/textViewNewPhoneNumber"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/textViewPhoneNumber"
+            android:text="@string/convert"
+            android:textColor="@color/grey"
+            android:textSize="12sp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textViewNewPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textViewPhoneNumber"
+            android:layout_alignBottom="@+id/textViewPhoneNumber"
+            android:layout_alignParentRight="false"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/textViewConvertSign"
+            android:text="@string/TEST_NEWPHONENUMBER"
+            android:textColor="@color/grey"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
 
     <CheckBox
         android:id="@+id/checkBoxSelected"
