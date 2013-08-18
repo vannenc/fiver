@@ -3,7 +3,7 @@
     <color name="grey">#999</color>
     <color name="dark_grey">#666</color>
     <color name="light_grey">#dcdddc</color>
-    <color name="orange">#FF6600</color>
-    <color name="mtml">#6B8732</color>
-    <color name="emtel">#E12F25</color>
+    <color name="orange">#f0995f</color>
+    <color name="mtml">#8da165</color>
+    <color name="emtel">#df7a74</color>
 </resources>

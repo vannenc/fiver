@@ -29,6 +29,14 @@ public class ContactPageAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public CharSequence getPageTitle(int position) {
+		
+		switch(position){
+			case 0:
+				return "Unprocessed";
+			case 1:
+				return "Processed";
+			
+		}
 		return "Page " + position;
 	}
 }

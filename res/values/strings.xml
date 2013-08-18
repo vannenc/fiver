@@ -8,5 +8,6 @@
     <string name="TEST_NAME">John Lennon</string>
     <string name="TEST_PHONENUMBER">777-7777</string>
     <string name="TEST_TAG">M</string>
+    <string name="textviewEmptyListview">No phone numbers to show.</string>
 
 </resources>

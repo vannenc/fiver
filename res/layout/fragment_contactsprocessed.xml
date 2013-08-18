@@ -9,5 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
+    
+    <TextView
+        android:id="@+id/textViewEmptyListViewProcessed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/textviewEmptyListview"
+        android:textColor="@color/dark_grey" />
 
 </LinearLayout>
