@@ -5,6 +5,7 @@ import java.util.List;
 import ws.vannen.fiver.R;
 import ws.vannen.fiver.data.Contact;
 import ws.vannen.fiver.data.Contact.PhoneNumberType;
+import ws.vannen.fiver.ui.MainFragmentActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,6 +67,15 @@ public class ContactAdapter extends BaseAdapter {
 			viewHolder.relativeLayoutNumberType = (RelativeLayout)convertView.findViewById(R.id.RelativeLayoutNumberType);
 			viewHolder.textViewNewPhoneNumber = (TextView)convertView.findViewById(R.id.textViewNewPhoneNumber);
 			convertView.setTag(viewHolder);
+			
+			if(MainFragmentActivity.robotoRegularFontTypeface != null){
+				
+				viewHolder.textViewDisplayName.setTypeface(MainFragmentActivity.robotoRegularFontTypeface);
+				viewHolder.textViewNewPhoneNumber.setTypeface(MainFragmentActivity.robotoRegularFontTypeface);
+				viewHolder.textViewPhoneNumber.setTypeface(MainFragmentActivity.robotoRegularFontTypeface);
+				viewHolder.textViewPhoneNumberTag.setTypeface(MainFragmentActivity.robotoRegularFontTypeface);
+			}
+			
 		}else{
 			viewHolder = (ViewHolder) convertView.getTag();
 		}

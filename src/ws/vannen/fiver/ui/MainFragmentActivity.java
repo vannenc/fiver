@@ -41,6 +41,7 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 	public static ContactAdapter contactProcessedAdapter = null;
 	
 	public static Typeface robotoFontTypeface = null;
+	public static Typeface robotoRegularFontTypeface = null;
 	public static int totalEmtelContacts = 0;
 	public static int totalMtmlContacts = 0;
 	public static int totalCellplusContacts = 0;
@@ -55,6 +56,7 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 		setContentView(R.layout.fragmentactivity_main);
 		
 		robotoFontTypeface = Typeface.createFromAsset(getAssets(), "font/Roboto-Light.ttf");
+		robotoRegularFontTypeface = Typeface.createFromAsset(getAssets(), "font/Roboto-Regular.ttf");
 		
 		ArrayList<Contact> t = new ArrayList<Contact>();
 		t.add(new Contact("1", "hhe", "ewre"));
