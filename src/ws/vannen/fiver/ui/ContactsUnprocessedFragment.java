@@ -33,6 +33,8 @@ public class ContactsUnprocessedFragment extends SherlockFragment {
 	private ProgressDialog pDialog = null;
 	
 	private String absMenuProcess = "Convert";
+	private String absMenuSelectAll = "Select all";
+	private String absMenuSelectNone = "Select none";
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,6 +81,8 @@ public class ContactsUnprocessedFragment extends SherlockFragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.add(absMenuProcess).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		menu.add(absMenuSelectAll).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		menu.add(absMenuSelectNone).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 	}
 	
 	
@@ -88,9 +92,24 @@ public class ContactsUnprocessedFragment extends SherlockFragment {
 		String itemTitle = item.getTitle().toString();
 		
 		if(itemTitle.equals(absMenuProcess)){
-			
 			new ProcessContactsAsyncTask().execute();
+			return true;
+		}
+		
+		if(itemTitle.equals(absMenuSelectAll)){
 			
+			int contactSize = MainFragmentActivity.unProcessedContacts.size();
+			
+			if(contactSize > 0){
+				
+				for(int i = 0; i <contactSize; i++){
+					
+				}
+			}
+			return true;
+		}
+		
+		if(itemTitle.equals(absMenuSelectNone)){
 			return true;
 		}
 		

@@ -1,7 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollviewWelcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:fillViewport="true" >
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/default_screen_padding" >
+
+        <TextView
+            android:id="@+id/textViewWelcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Welcometext" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textViewWelcomeText"
+            android:layout_below="@+id/textViewWelcomeText"
+            android:layout_marginTop="19dp" >
+
+            <ImageView
+                android:id="@+id/imageViewEmtel"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_toRightOf="@id/imageViewEmtel"
+                android:contentDescription="@string/NULL"
+                android:src="@color/emtel" />
+
+            <TextView
+                android:id="@+id/textViewEmtelContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/imageViewEmtel"
+                android:text="TextView" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/relativeLayout2"
+            android:layout_below="@+id/relativeLayout2"
+            android:layout_marginTop="30dp" >
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_toRightOf="@+id/ImageView01"
+                android:contentDescription="@string/NULL"
+                android:src="@color/mtml" />
+
+            <TextView
+                android:id="@+id/textViewMtmlContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/ImageView01"
+                android:text="TextView" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/RelativeLayout01"
+            android:layout_below="@+id/RelativeLayout01"
+            android:layout_marginTop="30dp" >
+
+            <ImageView
+                android:id="@+id/ImageView02"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_toRightOf="@+id/ImageView02"
+                android:contentDescription="@string/NULL"
+                android:src="@color/orange" />
+
+            <TextView
+                android:id="@+id/textViewOrangeContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/ImageView02"
+                android:text="TextView" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/buttonConvertAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/RelativeLayout02"
+            android:layout_below="@+id/RelativeLayout02"
+            android:layout_marginTop="24dp"
+            android:text="@string/buttonConvertAll" />
+
+    </RelativeLayout>
+
+</ScrollView>

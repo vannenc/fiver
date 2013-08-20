@@ -11,6 +11,7 @@ import ws.vannen.fiver.data.adapter.ContactPageAdapter;
 import ws.vannen.fiver.utils.MruPhoneNumberUtils;
 import android.app.ProgressDialog;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -39,11 +40,21 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 	public static ContactAdapter contactUnprocessedAdapter = null;
 	public static ContactAdapter contactProcessedAdapter = null;
 	
+	public static Typeface robotoFontTypeface = null;
+	public static int totalEmtelContacts = 0;
+	public static int totalMtmlContacts = 0;
+	public static int totalCellplusContacts = 0;
+	
+	private StartScreenFragment startScreenFragment = new StartScreenFragment();
+	
+	
 	@Override
 	protected void onCreate(Bundle bundle) {
 		setTheme(R.style.Theme_Fiver);
 		super.onCreate(bundle);
 		setContentView(R.layout.fragmentactivity_main);
+		
+		robotoFontTypeface = Typeface.createFromAsset(getAssets(), "font/Roboto-Light.ttf");
 		
 		ArrayList<Contact> t = new ArrayList<Contact>();
 		t.add(new Contact("1", "hhe", "ewre"));
@@ -51,7 +62,8 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 		
 		fragmentManager = getSupportFragmentManager();
 		List<Fragment> allFragments = new ArrayList<Fragment>();
-		allFragments.add(new StartScreenFragment());
+		
+		allFragments.add(startScreenFragment);
 		allFragments.add(new ContactsUnprocessedFragment());
 		allFragments.add(new ContactsProcessedFragment());
 		
@@ -104,6 +116,10 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 			processedContacts.clear();
 			unProcessedContacts.clear();
 			
+			totalEmtelContacts = 0;
+			totalMtmlContacts = 0;
+			totalCellplusContacts = 0;
+			
 			if(contactUnprocessedAdapter != null){
 				contactUnprocessedAdapter.notifyDataSetChanged();
 			}
@@ -115,9 +131,25 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 				String contactPhoneNumber = data.getString(2);
 				
 				if(MruPhoneNumberUtils.isMobilePhoneNumber(contactPhoneNumber)){
-					contact.setPhoneNumberType(MruPhoneNumberUtils.detectPhoneNumber(contactPhoneNumber));
+					
+					PhoneNumberType phoneNumberType = MruPhoneNumberUtils.detectPhoneNumber(contactPhoneNumber);
+					contact.setPhoneNumberType(phoneNumberType);
 					contact.setNewPhoneNumber(data.getString(2).replaceAll(
 							MruPhoneNumberUtils.patternPhoneNumberConvert, "5$0"));
+					
+					switch (phoneNumberType) {
+						case Emtel:
+							totalEmtelContacts +=1;
+							break;
+							
+						case Cellplus:
+							totalCellplusContacts +=1;
+							break;
+							
+						case Mtml:
+							totalMtmlContacts += 1;
+							break;
+					}
 					
 					if(contact.getPhoneNumberType() != PhoneNumberType.Unknown){
 						contact.setSelectedToProcess(true);
@@ -147,6 +179,7 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 			}
 			contactUnprocessedAdapter.notifyDataSetChanged();
 			contactProcessedAdapter.notifyDataSetChanged();
+			startScreenFragment.updateNumbers();
 			//data.moveToFirst();
 			Log.e("test rpocessed", processedContacts.size() + "");
 			

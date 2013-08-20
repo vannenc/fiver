@@ -5,4 +5,5 @@
     <dimen name="listitem_textview_phonenumber">14sp</dimen>
     <dimen name="listitem_tag">10dp</dimen>
     <dimen name="listview_textview_tag">12sp</dimen>
+    <dimen name="default_screen_padding">16dp</dimen>
 </resources>
