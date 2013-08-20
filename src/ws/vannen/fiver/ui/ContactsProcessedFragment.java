@@ -28,7 +28,11 @@ public class ContactsProcessedFragment extends SherlockFragment {
 	private View view = null;
 	private TextView textViewEmptyList = null;
 	private ListView listViewContactsProcessed = null;
+	
 	private String absUndo = "Undo";
+	private String absMenuSelectAll = "Select all";
+	private String absMenuSelectNone = "Select none";
+	
 	private ProgressDialog pDialog = null;
 	
 	
@@ -83,6 +87,8 @@ public class ContactsProcessedFragment extends SherlockFragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		menu.add(absUndo).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		menu.add(absMenuSelectAll).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		menu.add(absMenuSelectNone).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 	}
 	
 	@Override
@@ -91,6 +97,36 @@ public class ContactsProcessedFragment extends SherlockFragment {
 		
 		if(itemTitle.equals(absUndo)){
 			new RevertContactBackOldFormatAsyncTask().execute();
+			return true;
+		}
+		
+		//select all
+		if(itemTitle.equals(absMenuSelectAll)){
+			
+			int contactSize = MainFragmentActivity.processedContacts.size();
+			
+			if(contactSize > 0){
+				
+				for(int i = 0; i <contactSize; i++){
+					MainFragmentActivity.processedContacts.get(i).setSelectedToProcess(true);
+				}
+				MainFragmentActivity.contactProcessedAdapter.notifyDataSetChanged();
+			}
+			return true;
+		}
+		
+		//select none
+		if(itemTitle.equals(absMenuSelectNone)){
+			
+			int contactSize = MainFragmentActivity.processedContacts.size();
+			
+			if(contactSize > 0){
+				
+				for(int i = 0; i <contactSize; i++){
+					MainFragmentActivity.processedContacts.get(i).setSelectedToProcess(false);
+				}
+				MainFragmentActivity.contactProcessedAdapter.notifyDataSetChanged();
+			}
 			return true;
 		}
 		

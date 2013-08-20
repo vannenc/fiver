@@ -91,11 +91,13 @@ public class ContactsUnprocessedFragment extends SherlockFragment {
 		
 		String itemTitle = item.getTitle().toString();
 		
+		//process
 		if(itemTitle.equals(absMenuProcess)){
 			new ProcessContactsAsyncTask().execute();
 			return true;
 		}
 		
+		//select all
 		if(itemTitle.equals(absMenuSelectAll)){
 			
 			int contactSize = MainFragmentActivity.unProcessedContacts.size();
@@ -103,13 +105,27 @@ public class ContactsUnprocessedFragment extends SherlockFragment {
 			if(contactSize > 0){
 				
 				for(int i = 0; i <contactSize; i++){
-					
+					MainFragmentActivity.unProcessedContacts.get(i).setSelectedToProcess(true);
 				}
+				MainFragmentActivity.contactUnprocessedAdapter.notifyDataSetChanged();
 			}
 			return true;
 		}
 		
+		//select none
 		if(itemTitle.equals(absMenuSelectNone)){
+			
+			int contactSize = MainFragmentActivity.unProcessedContacts.size();
+			
+			if(contactSize > 0){
+				
+				for(int i = 0; i <contactSize; i++){
+					MainFragmentActivity.unProcessedContacts.get(i).setSelectedToProcess(false);
+				}
+				
+				MainFragmentActivity.contactUnprocessedAdapter.notifyDataSetChanged();
+			}
+			
 			return true;
 		}
 		
