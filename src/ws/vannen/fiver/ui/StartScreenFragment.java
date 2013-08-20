@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
 public class StartScreenFragment extends SherlockFragment {
 	
@@ -39,16 +42,21 @@ public class StartScreenFragment extends SherlockFragment {
 	private String welcomeTextNumbersFound = "Yup, you have some old format numbers.";
 	private String welcomeTextNumbersNotFound = "Nopes, no old format numbers found.";
 	
+	private String absMenuAbout = "About";
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.fragment_startscreen, container, false);
+		setHasOptionsMenu(true);
 		return view;
 	}
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		
+		
 		
 		textViewWelcome = (TextView)view.findViewById(R.id.textViewWelcomeText);
 		textViewCellplusContacts = (TextView)view.findViewById(R.id.textViewOrangeContacts);
@@ -89,6 +97,26 @@ public class StartScreenFragment extends SherlockFragment {
 		}else{
 			textViewWelcome.setText(welcomeTextNumbersNotFound);
 		}
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		
+		menu.add(absMenuAbout)
+			.setIcon(R.drawable.action_about)
+			.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		String itemTitle = item.getTitle().toString();
+		
+		if(itemTitle.equals(absMenuAbout)){
+			
+			return true;
+		}
+		
+		return false;
 	}
 	
 	
