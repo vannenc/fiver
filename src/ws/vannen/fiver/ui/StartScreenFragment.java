@@ -36,6 +36,9 @@ public class StartScreenFragment extends SherlockFragment {
 	private String mtmlText = "Mtml numbers";
 	private String orangeText = "Orange numbers";
 	
+	private String welcomeTextNumbersFound = "Yup, you have some old format numbers.";
+	private String welcomeTextNumbersNotFound = "Nopes, no old format numbers found.";
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -79,6 +82,13 @@ public class StartScreenFragment extends SherlockFragment {
 		textViewMtmlContacts.setText(MainFragmentActivity.totalMtmlContacts + "  " + mtmlText);
 		textViewCellplusContacts.setText(MainFragmentActivity.totalCellplusContacts+ "  " + orangeText);
 		
+		if(MainFragmentActivity.totalEmtelContacts > 0
+				|| MainFragmentActivity.totalMtmlContacts > 0
+				|| MainFragmentActivity.totalCellplusContacts > 0){
+			textViewWelcome.setText(welcomeTextNumbersFound);
+		}else{
+			textViewWelcome.setText(welcomeTextNumbersNotFound);
+		}
 	}
 	
 	
