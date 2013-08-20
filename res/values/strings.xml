@@ -11,5 +11,6 @@
     <string name="textviewEmptyListview">No phone numbers to show.</string>
     <string name="TEST_NEWPHONENUMBER">5777-7777</string>
     <string name="convert">></string>
+    <string name="Welcometext">We have found</string>
 
 </resources>

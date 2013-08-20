@@ -51,8 +51,10 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 		
 		fragmentManager = getSupportFragmentManager();
 		List<Fragment> allFragments = new ArrayList<Fragment>();
+		allFragments.add(new StartScreenFragment());
 		allFragments.add(new ContactsUnprocessedFragment());
 		allFragments.add(new ContactsProcessedFragment());
+		
 
 		
 		contactPageAdapter = new ContactPageAdapter(fragmentManager, allFragments);

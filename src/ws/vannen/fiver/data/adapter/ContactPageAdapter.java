@@ -32,9 +32,11 @@ public class ContactPageAdapter extends FragmentPagerAdapter {
 		
 		switch(position){
 			case 0:
-				return "Unprocessed";
+				return "Welcome";
 			case 1:
-				return "Processed";
+				return "Old";
+			case 2:
+				return "New";
 			
 		}
 		return "Page " + position;
