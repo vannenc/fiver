@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/RelativeLayout1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/default_screen_padding" >
 
@@ -41,7 +41,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/imageViewEmtel"
-                android:text="TextView" />
+                android:text="@string/TEST_TAG" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -67,7 +67,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/ImageView01"
-                android:text="TextView" />
+                android:text="@string/TEST_TAG" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -93,7 +93,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/ImageView02"
-                android:text="TextView" />
+                android:text="@string/TEST_TAG" />
         </RelativeLayout>
 
         <Button

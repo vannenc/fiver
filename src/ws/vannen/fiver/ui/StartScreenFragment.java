@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -43,7 +44,9 @@ public class StartScreenFragment extends SherlockFragment {
 	private String welcomeTextNumbersNotFound = "Nopes no old format numbers found.";
 	
 	private String strFragmentAboutDialog = "fragment_about";
-	
+	private String strToastConvertionComplete = "Conversion complete.";
+	private String strToastConvertionFailed= "Conversion failed.";
+
 	private String absMenuAbout = "About";
 	
 	@Override
@@ -122,7 +125,9 @@ public class StartScreenFragment extends SherlockFragment {
 	
 	
 	private class ProcessContactsAsyncTask extends AsyncTask<Void, Void, Void>{
-			
+		
+			private Boolean erroneous = false;
+		
 			@Override
 			protected void onPreExecute() {
 				super.onPreExecute();
@@ -162,9 +167,11 @@ public class StartScreenFragment extends SherlockFragment {
 		        } catch (RemoteException e) {
 		            // TODO Auto-generated catch block
 		            e.printStackTrace();
+		            this.erroneous = true;
 		        } catch (OperationApplicationException e) {
 		            // TODO Auto-generated catch block
 		            e.printStackTrace();
+		            this.erroneous = true;
 		        }       
 	
 				return null;
@@ -177,6 +184,16 @@ public class StartScreenFragment extends SherlockFragment {
 				if(pDialog != null && pDialog.isShowing()){
 					pDialog.dismiss();
 					pDialog = null;
+				}
+				
+				if(this.erroneous){
+					Toast.makeText(getActivity(), 
+							strToastConvertionFailed, 
+							Toast.LENGTH_SHORT).show();
+				}else{
+					Toast.makeText(getActivity(), 
+							strToastConvertionComplete, 
+							Toast.LENGTH_SHORT).show();
 				}
 			}
 		}

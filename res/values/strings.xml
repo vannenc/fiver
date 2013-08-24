@@ -6,15 +6,15 @@
     <string name="menu_settings">Settings</string>
     <string name="NULL"></string>
     <string name="TEST_NAME">John Lennon</string>
-    <string name="TEST_PHONENUMBER">777-7777</string>
+    <string name="TEST_PHONENUMBER">777–7777</string>
     <string name="TEST_TAG">M</string>
     <string name="textviewEmptyListview">No phone numbers to show.</string>
-    <string name="TEST_NEWPHONENUMBER">5777-7777</string>
+    <string name="TEST_NEWPHONENUMBER">5777–7777</string>
     <string name="convert">></string>
     <string name="Welcometext">We have found these old numbers</string>
     <string name="buttonConvertAll">Convert all</string>
     <string name="textViewAboutTitle">About</string>
-    <string name="ABOUT_DETAILS">Fiver is a small tool to ease up the transition of Mauritian mobile numbers to 8 digits as from 1 Sep 2013.</string>
+    <string name="ABOUT_DETAILS">Fiver is a small tool to ease up the transition of Mauritian mobile numbers to 8 digits.</string>
     <string name="ABOUT_GITHUB">This app is free and open source. Feel free to fork it on Github.</string>
     <string name="ABOUT_MOREDETAILS">Coded by Vannen.  CC Attribution-NonCommercial-ShareAlike 3.0 Unported</string>
 
