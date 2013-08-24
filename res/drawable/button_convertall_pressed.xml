@@ -2,13 +2,13 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
-	    <color android:color="#999"/>
+	    <color android:color="#dcdcdc"/>
 	</item>
 	
 	<item android:bottom="3dp">
 	    <shape android:shape="rectangle">
-		    <gradient android:startColor="#ededed"
-		        	  android:endColor="#dcdcdc"
+		    <gradient android:startColor="#888"
+		        	  android:endColor="#999"
 		        	  android:angle="-90" />
 		</shape>
 	</item>

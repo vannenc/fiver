@@ -104,7 +104,7 @@
             android:layout_alignLeft="@+id/RelativeLayout02"
             android:layout_below="@+id/RelativeLayout02"
             android:layout_marginTop="24dp"
-            android:background="@drawable/button_convertall"
+            android:background="@drawable/selector_button_convertall"
             android:text="@string/buttonConvertAll" />
 
     </RelativeLayout>
