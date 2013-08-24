@@ -39,8 +39,10 @@ public class StartScreenFragment extends SherlockFragment {
 	private String mtmlText = "Mtml numbers";
 	private String orangeText = "Orange numbers";
 	
-	private String welcomeTextNumbersFound = "Yup, you have some old format numbers.";
-	private String welcomeTextNumbersNotFound = "Nopes, no old format numbers found.";
+	private String welcomeTextNumbersFound = "Yup you have some old format numbers.";
+	private String welcomeTextNumbersNotFound = "Nopes no old format numbers found.";
+	
+	private String strFragmentAboutDialog = "fragment_about";
 	
 	private String absMenuAbout = "About";
 	
@@ -55,8 +57,6 @@ public class StartScreenFragment extends SherlockFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		
 		
 		textViewWelcome = (TextView)view.findViewById(R.id.textViewWelcomeText);
 		textViewCellplusContacts = (TextView)view.findViewById(R.id.textViewOrangeContacts);
@@ -112,7 +112,8 @@ public class StartScreenFragment extends SherlockFragment {
 		String itemTitle = item.getTitle().toString();
 		
 		if(itemTitle.equals(absMenuAbout)){
-			
+			 AboutDialogFragment aboutDialog = new AboutDialogFragment();
+			 aboutDialog.show(getFragmentManager(), strFragmentAboutDialog);
 			return true;
 		}
 		

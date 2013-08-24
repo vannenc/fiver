@@ -11,6 +11,8 @@ import android.os.StrictMode;
 public class CoreApp extends Application {
 	
 	private static final Boolean DEVELOPER_MODE = true;
+	public static final String GITHUB_LINK = "https://github.com/vannenc/fiver";
+	public static final String My_WEBSITE = "http://www.vannen.ws";
 	
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	@Override
