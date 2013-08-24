@@ -10,6 +10,12 @@
 		    <gradient android:startColor="#ededed"
 		        	  android:endColor="#dcdcdc"
 		        	  android:angle="-90" />
+		    
+		    <padding 
+		        		android:top="5dp" 
+		        		android:bottom="5dp" 
+		        		android:right="10dp" 
+		        		android:left="10dp"/>
 		</shape>
 	</item>
 	

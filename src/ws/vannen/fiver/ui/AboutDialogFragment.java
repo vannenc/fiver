@@ -4,8 +4,11 @@ import ws.vannen.fiver.R;
 import ws.vannen.fiver.app.CoreApp;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,6 +35,9 @@ public class AboutDialogFragment extends SherlockDialogFragment {
 		if(dialog == null){
 			dialog = getDialog();
 			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			
+			setStyle(DialogFragment.STYLE_NO_FRAME,0);
+	        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 		}
 		
 		return view;
