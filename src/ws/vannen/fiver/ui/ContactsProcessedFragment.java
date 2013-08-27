@@ -48,12 +48,9 @@ public class ContactsProcessedFragment extends SherlockFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setHasOptionsMenu(true);
-		//Log.d("stuffs", b.getParcelableArrayList("stuffs").toString());
-		//ArrayList<Contact> all = b.getParcelableArrayList("stuffs");
 		
 		textViewEmptyList = (TextView)view.findViewById(R.id.textViewEmptyListViewProcessed);
 		listViewContactsProcessed = (ListView)view.findViewById(R.id.listViewContactsProcessed);
-		//processedContactsAdapter = new ContactAdapter(getActivity(), all)
 		
 		listViewContactsProcessed.setEmptyView(textViewEmptyList);
 		listViewContactsProcessed.setAdapter(MainFragmentActivity.contactProcessedAdapter);
