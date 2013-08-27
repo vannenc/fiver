@@ -5,7 +5,11 @@
 	    <color android:color="#bbb"/>
 	</item>
 	
-	<item android:bottom="3dp">
+    <item android:bottom="1dp">
+        <color android:color="#ccc"/>
+    </item>
+	
+	<item android:bottom="1dp" android:right="1dp">
 	    <shape android:shape="rectangle">
 		    <gradient android:startColor="#ededed"
 		        	  android:endColor="#dcdcdc"
