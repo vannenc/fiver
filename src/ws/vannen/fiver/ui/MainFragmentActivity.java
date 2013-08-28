@@ -141,6 +141,9 @@ public class MainFragmentActivity extends SherlockFragmentActivity
 						case Mtml:
 							totalMtmlContacts += 1;
 							break;
+							
+						default:
+							
 					}
 					
 					if(contact.getPhoneNumberType() != PhoneNumberType.Unknown){
