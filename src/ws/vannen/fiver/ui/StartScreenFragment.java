@@ -46,6 +46,7 @@ public class StartScreenFragment extends SherlockFragment {
 	private String strFragmentAboutDialog = "fragment_about";
 	private String strToastConvertionComplete = "Conversion complete.";
 	private String strToastConvertionFailed= "Conversion failed.";
+	private String strToastNoNumbersToProcessed = "No old numbers to convert.";
 
 	private String absMenuAbout = "About";
 	
@@ -82,6 +83,18 @@ public class StartScreenFragment extends SherlockFragment {
 			
 			@Override
 			public void onClick(View v) {
+				try {
+					
+					if(MainFragmentActivity.unProcessedContacts.size() == 0){
+						Toast.makeText(getActivity(), strToastNoNumbersToProcessed, Toast.LENGTH_SHORT).show();
+						return;
+					}	
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+					return;
+				}
+
 				new ProcessContactsAsyncTask().execute();
 			}
 		});
@@ -89,17 +102,32 @@ public class StartScreenFragment extends SherlockFragment {
 	}
 	
 	public void updateNumbers(){
-		textViewEmtelContacts.setText(MainFragmentActivity.totalEmtelContacts + "  " + emtelText);
-		textViewMtmlContacts.setText(MainFragmentActivity.totalMtmlContacts + "  " + mtmlText);
-		textViewCellplusContacts.setText(MainFragmentActivity.totalCellplusContacts+ "  " + orangeText);
 		
-		if(MainFragmentActivity.totalEmtelContacts > 0
-				|| MainFragmentActivity.totalMtmlContacts > 0
-				|| MainFragmentActivity.totalCellplusContacts > 0){
-			textViewWelcome.setText(welcomeTextNumbersFound);
-		}else{
-			textViewWelcome.setText(welcomeTextNumbersNotFound);
+		try {
+			
+			if(textViewCellplusContacts == null){
+				textViewWelcome = (TextView)view.findViewById(R.id.textViewWelcomeText);
+				textViewCellplusContacts = (TextView)view.findViewById(R.id.textViewOrangeContacts);
+				textViewMtmlContacts = (TextView)view.findViewById(R.id.textViewMtmlContacts);
+				textViewEmtelContacts = (TextView)view.findViewById(R.id.textViewEmtelContacts);
+				buttonConvertAll = (Button)view.findViewById(R.id.buttonConvertAll);
+			}
+			
+			textViewEmtelContacts.setText(MainFragmentActivity.totalEmtelContacts + "  " + emtelText);
+			textViewMtmlContacts.setText(MainFragmentActivity.totalMtmlContacts + "  " + mtmlText);
+			textViewCellplusContacts.setText(MainFragmentActivity.totalCellplusContacts+ "  " + orangeText);
+			
+			if(MainFragmentActivity.totalEmtelContacts > 0
+					|| MainFragmentActivity.totalMtmlContacts > 0
+					|| MainFragmentActivity.totalCellplusContacts > 0){
+				textViewWelcome.setText(welcomeTextNumbersFound);
+			}else{
+				textViewWelcome.setText(welcomeTextNumbersNotFound);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+
 	}
 	
 	@Override
