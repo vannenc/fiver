@@ -40,7 +40,7 @@ public class MruPhoneNumberUtils {
    
    
    private static Pattern mauritianProcessedMobilePhoneNumber = Pattern
-		   .compile("(\\+230|\\+230 )?5[0-9]{3}( |-)?[0-9]{2}( |-)?[0-9]{2}");
+		   .compile("(\\+230|\\+230 |\\(\\+230\\)|\\(\\+230\\) )?5[0-9]{3}( |-)?[0-9]{2}( |-)?[0-9]{2}");
    
 	public static final boolean isProcessedMobilePhoneNumber(CharSequence target) {
 
