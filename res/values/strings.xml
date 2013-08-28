@@ -16,6 +16,6 @@
     <string name="textViewAboutTitle">About</string>
     <string name="ABOUT_DETAILS">Fiver is a small tool to ease up the transition of Mauritian mobile numbers to 8 digits.</string>
     <string name="ABOUT_GITHUB">This app is free and open source. Feel free to fork it on Github.</string>
-    <string name="ABOUT_MOREDETAILS">Coded by Vannen.  CC Attribution-NonCommercial-ShareAlike 3.0 Unported</string>
+    <string name="ABOUT_MOREDETAILS">Coded by Vannen.  This app is licensed under GPL V2.</string>
 
 </resources>
