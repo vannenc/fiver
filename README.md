@@ -4,6 +4,12 @@ Fiver
 Fiver is a small tool to ease up the transition of Mauritian mobile numbers to 8-digits.
 It automatically detects numbers from the three different mobile operators (i.e Emtel, Mtml, Orange) and does the conversion accordingly.
 
+
+Download
+===
+
+You can download the apk here: https://play.google.com/store/apps/details?id=ws.vannen.fiver
+
 Building
 ===
 
